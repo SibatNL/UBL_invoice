@@ -149,6 +149,13 @@
             <cac:SellersItemIdentification>
                 <cbc:ID>1ABCD</cbc:ID>
             </cac:SellersItemIdentification>
+            <cac:ClassifiedTaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>21.00</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
         </cac:Item>
     </cac:InvoiceLine>
 </Invoice>
