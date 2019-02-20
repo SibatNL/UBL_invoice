@@ -66,7 +66,7 @@ class InvoiceTest extends TestCase
                     ->setTaxScheme((new \CleverIt\UBL\Invoice\TaxScheme())
                         ->setId('VAT'))));
 
-        $invoiceLine = (new \CleverIt\UBL\Invoice\InvoiceLine())
+        $invoiceLine1 = (new \CleverIt\UBL\Invoice\InvoiceLine())
             ->setId(1)
             ->setInvoicedQuantity(1)
             ->setLineExtensionAmount(100)
@@ -84,7 +84,24 @@ class InvoiceTest extends TestCase
                 )
             );
 
-        $invoice->setInvoiceLines([$invoiceLine]);
+        $invoiceLine2 = (new \CleverIt\UBL\Invoice\InvoiceLine())
+            ->setId(2)
+            ->setInvoicedQuantity(1)
+            ->setLineExtensionAmount(100)
+            ->setItem((new \CleverIt\UBL\Invoice\Item())
+                ->setName("Test item")
+                ->setDescription("test item description")
+                ->setSellersItemIdentification("1ABCD")
+                ->setClassifiedTaxCategory((new \CleverIt\UBL\Invoice\TaxCategory())
+                    ->setId('S')
+                    ->setPercent('21.00')
+                    ->setTaxScheme((new \CleverIt\UBL\Invoice\TaxScheme())
+                        ->setId('VAT')
+                    )
+                )
+            );
+
+        $invoice->setInvoiceLines([$invoiceLine1, $invoiceLine2]);
         $invoice->setTaxTotal($taxtotal);
         $invoice->setLegalMonetaryTotal((new \CleverIt\UBL\Invoice\LegalMonetaryTotal())
             ->setLineExtensionAmount(100)

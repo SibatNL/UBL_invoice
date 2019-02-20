@@ -165,7 +165,15 @@ class InvoiceLine implements XmlSerializable {
                     'currencyID' => Generator::$currencyID
                 ]
             ],
-            Schema::CAC . 'TaxTotal' => $this->taxTotal,
+        ]);
+
+        if ($this->taxTotal) {
+            $writer->write([
+                Schema::CAC . 'TaxTotal' => $this->taxTotal,
+            ]);
+        }
+
+        $writer->write([
             Schema::CAC . 'Item' => $this->item,
         ]);
 
