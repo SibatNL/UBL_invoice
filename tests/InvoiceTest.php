@@ -32,10 +32,15 @@ class InvoiceTest extends TestCase
             ->setBuildingNumber("15")
             ->setPostalZone("5600 AC")
             ->setCountry((new \CleverIt\UBL\Invoice\Country())->setIdentificationCode("NL"));
+        $legalEntity = new \CleverIt\UBL\Invoice\LegalEntity();
+        $legalEntity->setRegistrationName('Some Company');
+        $legalEntity->setCompanyId('12345678');
+        $legalEntity->setCompanyIdSchemeId('0106');
 
         $accountingSupplierParty->setPostalAddress($supplierAddress);
         $accountingSupplierParty->setPhysicalLocation($supplierAddress);
         $accountingSupplierParty->setContact((new \CleverIt\UBL\Invoice\Contact())->setElectronicMail("info@cleverit.nl")->setTelephone("31402939003"));
+        $accountingSupplierParty->setLegalEntity($legalEntity);
 
         $invoice->setAccountingSupplierParty($accountingSupplierParty);
         $invoice->setAccountingCustomerParty($accountingSupplierParty);

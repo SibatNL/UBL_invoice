@@ -11,38 +11,60 @@ namespace CleverIt\UBL\Invoice;
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 
-class LegalEntity implements XmlSerializable {
+class LegalEntity implements XmlSerializable
+{
 
-	/**
-	 * @var string
-	 */
-	private $registrationName;
+    /**
+     * @var string
+     */
+    private $registrationName;
 
-	/**
-	 * @var int
-	 */
-	private $companyId;
+    /**
+     * @var int
+     */
+    private $companyId;
 
-	public function getRegistrationName() {
-		return $this->registrationName;
-	}
+    /**
+     * @var string
+     */
+    private $schemeID;
 
-	public function setRegistrationName($registrationName) {
-		$this->registrationName = $registrationName;
-	}
+    public function getRegistrationName()
+    {
+        return $this->registrationName;
+    }
 
-	public function getCompanyId() {
-		return $this->companyId;
-	}
+    public function setRegistrationName($registrationName)
+    {
+        $this->registrationName = $registrationName;
+    }
 
-	public function setCompanyId($companyId) {
-		$this->companyId = $companyId;
-	}
+    public function getCompanyId()
+    {
+        return $this->companyId;
+    }
 
-	function xmlSerialize(Writer $writer) {
-		$writer->write([
-			Schema::CBC.'RegistrationName' => $this->registrationName,
-			Schema::CBC.'CompanyID' => $this->companyId
-		]);
-	}
+    public function setCompanyId($companyId)
+    {
+        $this->companyId = $companyId;
+    }
+
+    public function setCompanyIdSchemeId($schemeID)
+    {
+        $this->schemeID = $schemeID;
+    }
+
+    public function xmlSerialize(Writer $writer)
+    {
+        $writer->write([
+            Schema::CBC . 'RegistrationName' => $this->registrationName
+        ]);
+        $writer->write([
+            'name' => Schema::CBC . 'CompanyID',
+            'value' => $this->companyId,
+            'attributes' => [
+                'schemeID' => $this->schemeID
+            ]
+        ]);
+    }
 }

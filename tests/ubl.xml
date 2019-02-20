@@ -33,6 +33,10 @@
                     </cac:Country>
                 </cac:Address>
             </cac:PhysicalLocation>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>Some Company</cbc:RegistrationName>
+                <cbc:CompanyID schemeID="0106">12345678</cbc:CompanyID>
+            </cac:PartyLegalEntity>
             <cac:Contact>
                 <cbc:Telephone>31402939003</cbc:Telephone>
                 <cbc:ElectronicMail>info@cleverit.nl</cbc:ElectronicMail>
@@ -64,6 +68,10 @@
                     </cac:Country>
                 </cac:Address>
             </cac:PhysicalLocation>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>Some Company</cbc:RegistrationName>
+                <cbc:CompanyID schemeID="0106">12345678</cbc:CompanyID>
+            </cac:PartyLegalEntity>
             <cac:Contact>
                 <cbc:Telephone>31402939003</cbc:Telephone>
                 <cbc:ElectronicMail>info@cleverit.nl</cbc:ElectronicMail>
