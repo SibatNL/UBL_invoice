@@ -109,6 +109,14 @@ class InvoiceTest extends TestCase
             ->setPayableAmount(-1000)
             ->setAllowanceTotalAmount(50));
 
+        $additionalDocumentReference = new \CleverIt\UBL\Invoice\AdditionalDocumentReference();
+        $additionalDocumentReference->setId('invoice.pdf');
+        $additionalDocumentReference->setDocumentType('PrimaryImage');
+        $additionalDocumentReference->setFilename('invoice.pdf');
+        $additionalDocumentReference->setAttachment('base');
+
+        $invoice->setAdditionalDocumentReference($additionalDocumentReference);
+
 
         $this->invoice = \CleverIt\UBL\Invoice\Generator::invoice($invoice, 'EUR');
     }

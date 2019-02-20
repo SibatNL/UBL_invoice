@@ -111,15 +111,18 @@ class Invoice implements XmlSerializable{
             Schema::CBC . 'CopyIndicator' => $this->copyIndicator ? 'true' : 'false',
             Schema::CBC . 'IssueDate' => $this->issueDate->format('Y-m-d'),
             Schema::CBC . 'InvoiceTypeCode' => $this->invoiceTypeCode,
-            Schema::CAC . 'AccountingSupplierParty' => [Schema::CAC . "Party" => $this->accountingSupplierParty],
-            Schema::CAC . 'AccountingCustomerParty' => [Schema::CAC . "Party" => $this->accountingCustomerParty],
         ]);
 
-        if($this->additionalDocumentReference!= null){
+        if ($this->additionalDocumentReference != null) {
             $writer->write([
                 Schema::CAC . 'AdditionalDocumentReference' => $this->additionalDocumentReference,
             ]);
         }
+
+        $writer->write([
+            Schema::CAC . 'AccountingSupplierParty' => [Schema::CAC . "Party" => $this->accountingSupplierParty],
+            Schema::CAC . 'AccountingCustomerParty' => [Schema::CAC . "Party" => $this->accountingCustomerParty],
+        ]);
 
         if ($this->allowanceCharges != null) {
             foreach ($this->allowanceCharges as $invoiceLine) {
